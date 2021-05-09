@@ -1,0 +1,2 @@
+This string goes inside of the file
+This is another string which going to append
