@@ -1,0 +1,140 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quotes REST API</title>
+  <link rel="image_src" href="/img/quotes_api.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/swagger/swagger-ui.css" >
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"  />
+<script src="/swagger/swagger-ui-bundle.js"> </script>
+<script src="/swagger/swagger-ui-standalone-preset.js"> </script>
+  <style>
+    html
+    {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+    }
+    *,
+    *:before,
+    *:after
+    {
+        box-sizing: inherit;
+    }
+
+    body {
+      margin:0;
+      background: #fafafa;
+    }
+
+    .swagger-ui .topbar {
+       display: none;
+    }
+
+    .download-url-wrapper {
+      position: absolute;
+      display: none;
+      width: 0px;
+      height: 0px;
+      top: -100px;
+      right: -100px;
+    }
+
+    #swagger-ui
+    { 
+       margin-bottom: 100px;
+    }
+
+    .tso-topbar {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #1b1b1b;
+        padding-left: 10%;
+        padding-right: 10%;
+        min-height: 50px;
+    }
+
+    .tso-text-center {
+    }
+
+    ul.tso-top-menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+        color: #eee;
+    }
+
+    ul.tso-top-menu a {
+       text-decoration: none;
+        color: #eee;
+    }
+
+.tso-top-menu li {
+  float: left;
+}
+
+.tso-top-menu li a {
+  display: block;
+  padding-right: 25px; 
+}
+  </style>
+</head>
+
+<body>
+<div class="tso-topbar">
+      <nav id="tso-top-menu text-center">
+          <ul class="tso-top-menu">
+            <li><a href="/"><img src="https://theysaidso.com/branding/theysaidso.png" width="35" height="35"></a></li>
+            <li><a href="https://theysaidso.com/api">They Said So</a></li>
+            <!--li><a href="https://theysaidso.com/api">Subscribe</a></li-->
+          </ul>
+      </nav>
+</div>
+
+<div id="swagger-ui"></div>
+
+<script>
+window.onload = function() {
+  // Build a system
+  var yamlurl =  "http://" + location.hostname + "/yaml/theysaidso.quotes.openapi.yaml?v1.1";
+  if (location.protocol === 'https:') {
+     yamlurl =   "https://" + location.hostname + "/yaml/theysaidso.quotes.openapi.yaml?v1.1";
+  }
+  const ui = SwaggerUIBundle({
+    url: yamlurl,
+    dom_id: '#swagger-ui',
+    //validatorUrl: "",
+    supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    jsonEditor: false,
+    showRequestHeaders: true,
+    layout: "StandaloneLayout"
+  })
+
+  window.ui = ui
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41028104-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41028104-2');
+</script>
+
+</body>
+
+</html>
+
+
